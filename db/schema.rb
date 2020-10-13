@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_170248) do
+ActiveRecord::Schema.define(version: 2020_10_13_205005) do
 
   create_table "creators", force: :cascade do |t|
     t.string "email"
     t.string "username"
     t.string "password_digest"
-    t.text "bio"
+    t.text "about"
     t.integer "age"
     t.string "location"
     t.string "promo_code"
