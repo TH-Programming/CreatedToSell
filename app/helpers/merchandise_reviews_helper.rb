@@ -1,0 +1,2 @@
+module MerchandiseReviewsHelper
+end
