@@ -1,0 +1,8 @@
+<%= @Creator.name %>
+
+<%= @creator.about %>
+
+<%= @creator.merchandise.each do |merch|%>
+<%= link_to merch.title, creator_merchandise_path(merch) %>
+<%= merch.price %>
+<%= merch.description%>

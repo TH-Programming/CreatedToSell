@@ -8,10 +8,10 @@ class SalesController < ApplicationController
 
     end
     def new
-
+        @sale= Sale.new
     end
     def create
-
+        
     end
     def edit
 
@@ -23,6 +23,7 @@ class SalesController < ApplicationController
         
     end
 
+    private
     def sale_params
         params.require(:sale).permit(:user_id, :creator_id, :promo_code, :tip)
     end
