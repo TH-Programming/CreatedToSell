@@ -4,7 +4,9 @@ class Merchandise < ApplicationRecord
     has_many :sales
     validates :title, :description, :price, presence: true
     
-
+    def self.creator_name
+        self.creator.name
+    end
 
 
 

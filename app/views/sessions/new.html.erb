@@ -2,11 +2,10 @@
    that sets param[:u_c] so controller knows whether to search user or creator
 
 LogIn Form
-<%= form_tag "session#create" %>
-Username<%= input_field_tag :username %>
-Email<%= input_field_tag :email %>
-Pasword<%= input_field_tag :password %>
+<%= form_tag "sessions#create"%>
+Username<%= text_field_tag :username %>
+Email<%= text_field_tag :email %>
+Pasword<%= text_field_tag :password %>
 User<%= radio_button_tag 'u_c', 'u' %>
 Creator<%= radio_button_tag 'u_c', 'c' %>
 <%= submit_tag "LogIn" %>
-<% end %>

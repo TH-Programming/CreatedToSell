@@ -4,18 +4,20 @@ class MerchandiseReviewsController < ApplicationController
     def new
         @merch_review = MerchandiseReview.new
     end
-    def create
-        review = MerchandiseReview.new()
-    end
 
+    def create
+        review = MerchandiseReview.new(review_params)
+    end
 
     def edit
 
     end
+
     def update
         @review.update(review_params)
         redirect_to
     end
+
     def delete
             @review.delete
             redirect_to
@@ -23,8 +25,9 @@ class MerchandiseReviewsController < ApplicationController
 
     private
     def find_review
-    @review = Review.find_by(id: params[:id])
+        @review = Review.find_by(id: params[:id])
     end
+
     def review_params
         params.require[:merchandise_review].permit(:title, :body, :rating)
     end

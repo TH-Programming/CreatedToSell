@@ -1,2 +1,9 @@
 <%= render partial:"form" , locals: {what: @creator} %>
- <%= f.text_field :bio %>
+About Me:<%= f.text_field :about %>
+<%= f.text_field :location %>
+<p>Set a PromoCode for users to get a discount! 
+Only you can see your promo code.</p>
+<%= f.text_field :promo_code %>
+Discount (%)<%= f.text_field :promo_discount %>
+<%= f.submit "Edit Info" %>
+<%= end %>

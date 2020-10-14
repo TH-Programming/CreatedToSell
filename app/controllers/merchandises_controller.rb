@@ -1,6 +1,6 @@
 class MerchandisesController < ApplicationController
-    before_action: :find_merch, only: [:show, :edit, :update, :delete]
-    
+    before_action :find_merch, only: [:show, :edit, :update, :delete]
+    before_action :find_reviews_by_merch, only: [:show]
     def index
         @merchandises = Merchandise.all
     end
