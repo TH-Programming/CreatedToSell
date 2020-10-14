@@ -5,5 +5,11 @@ class User < ApplicationRecord
     validates :username, :email, presence: true
     has_secure_password
     
+    def find_user_by_username
+        @user = User.find_by(username: params[:username])
+    end
 
+    def find_user_by_email
+        @user = User.find_by(email: params[:email])
+    end
 end

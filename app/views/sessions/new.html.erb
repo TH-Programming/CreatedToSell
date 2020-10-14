@@ -1,0 +1,12 @@
+#! User and Creator have same login requirements. Use a radio button
+   that sets param[:u_c] so controller knows whether to search user or creator
+
+LogIn Form
+<%= form_tag "session#create" %>
+Username<%= input_field_tag :username %>
+Email<%= input_field_tag :email %>
+Pasword<%= input_field_tag :password %>
+User<%= radio_button_tag 'u_c', 'u' %>
+Creator<%= radio_button_tag 'u_c', 'c' %>
+<%= submit_tag "LogIn" %>
+<% end %>
