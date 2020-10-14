@@ -1,5 +1,5 @@
 class CreatorsController < ApplicationController
-    before_action: :find_creator, only: [:show, :edit, :update, :delete]
+    before_action :find_creator, only: [:show, :edit, :update, :delete]
     
     
     def index

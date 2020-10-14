@@ -1,8 +1,8 @@
-<%= @Creator.name %>
 
-<%= @creator.about %>
+<%= render partial: "users/info", locals: {user: @creator} %>
 
 <%= @creator.merchandise.each do |merch|%>
 <%= link_to merch.title, creator_merchandise_path(merch) %>
 <%= merch.price %>
 <%= merch.description%>
+<%= end %>

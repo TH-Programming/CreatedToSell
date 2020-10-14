@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-    before_action: :find_sale, only: [:show, :edit, :update, :delete]
+    before_action :find_sale, only: [:show, :edit, :update, :delete]
     
     def index
         

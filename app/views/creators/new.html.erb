@@ -1,4 +1,6 @@
-<%= render partial:"form" locals: {what: @creator} %>
-<%= f.input_field :about %>
+<%= form_with model: @creator, locals: :true do |f|%>
+<%= render partial:"form" %>
+About
+<%= f.text_field :about %>
 <%= f.submit "Create Account" %>
-<% end %>
+<% end%>

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-before_action :find_user_or_creator, only: [:create]
+
 
     def new
         
@@ -42,12 +42,15 @@ before_action :find_user_or_creator, only: [:create]
                find_user_by_username
                if @user
                 session[:user_id] = user.id
+                redirect_to user_path(@user)
+
                else render "sessions/new"
                end
             elsif params[:email]
                 find_user_by_email
                 if @user
                     session[:user_id] = @user.id
+                    redirect_to user_path(@user)
                 else
                     render "sessions/new"
                 end
@@ -57,26 +60,26 @@ before_action :find_user_or_creator, only: [:create]
                 find_creator_by_username
                 if @creator
                     session[:creator_id] = @creator.id
+                    redirect_to creator_path(@creator)
+
                 else render "sessions/new"
                 end
-             elsif params[:email]
+            elsif params[:email]
                 find_creator_by_email
-                if @user
+                if @creator
                     session[:creator_id] = @creator.id
+                    redirect_to creator_path(@creator)
+
                 else
                     render "sessions/new"
                 end
-             end
+            else
+                render "sessions/new"
+            end
         else
             render "sessions/new"
         end
     end
-    def find_user_or_creator
-        if params[:u_c] == u
-            user = User.find_by(id: params[:id])
-        elsif params[:u_c] == c
-            creator == Creator.find_by(id: params[:id])
-        end
-    end
+
 
 end

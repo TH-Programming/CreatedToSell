@@ -16,11 +16,14 @@
 <h1 class="head">CreatedToSell</h1>
 <div class=container>
   <div class="row">
-    <div class="col">
-      Login
+    <div class="col-2">
+      <%=link_to "LogIn", login_path%>
     </div>
-    <div class="col">
-      Signup
+    <div class="col-4">
+      <%= link_to "User Signup", new_user_path %>
+    </div>
+    <div class="col-6">
+      <%= link_to "Creator Signup", new_creator_path %>
     </div>
   </div>
 </div>

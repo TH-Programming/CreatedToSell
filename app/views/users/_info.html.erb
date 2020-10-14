@@ -1,0 +1,8 @@
+<h2><%= user.username %></h2>
+<br>
+<% if user.about %>
+<p><%= user.about %></p>
+<% end %>
+<br>
+Joined: <%= user.normalize_created_at %>
+

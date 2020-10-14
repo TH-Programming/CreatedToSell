@@ -1,4 +1,2 @@
-<%= @user.username%>
-
-<%= @user.about%>
+<%= render partial:"info", locals: {user => @user} %>
 

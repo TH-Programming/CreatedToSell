@@ -13,4 +13,9 @@ class Creator < ApplicationRecord
     def find_creator_by_email
         @creator = Creator.find_by(email: params[:email])
     end
+
+    def self.merchandise_count
+        self.merchandises.length
+    end
+
 end

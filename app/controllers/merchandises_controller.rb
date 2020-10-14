@@ -5,7 +5,7 @@ class MerchandisesController < ApplicationController
         @merchandises = Merchandise.all
     end
     def show
-
+        @review = MerchandiseReview.new
     end
     def new
         @merchandise = Merchandise.new
