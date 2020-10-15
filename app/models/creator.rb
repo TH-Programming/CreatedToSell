@@ -3,6 +3,7 @@ class Creator < ApplicationRecord
     has_many :sales, through: :merchandises
     has_many :categories, through: :merchandises
     validates :email, :username, presence: true
+    validates :email, :username, uniqueness: true
     has_secure_password
     validates :promo_discount, inclusion: {in: (0..100)}
 

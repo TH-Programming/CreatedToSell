@@ -1,2 +1,15 @@
-<%=render partial: "creators/form", locals: {what: @user}%>
+<%= form_with model: @user do |f| %>
+Username
+<%= f.text_field :username %>
+Email
+<%= f.text_field :email %>
+Confirm Email
+
+Password
+<%= f.text_field :password %>
+Confirm Password
+
+Age
+<%= f.text_field :age %>
+<%= f.submit "Create Account" %>
 <% end %>

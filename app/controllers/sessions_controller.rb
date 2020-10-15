@@ -35,19 +35,21 @@ class SessionsController < ApplicationController
             false
         end
     end
+
     private
     def user_or_creator_login
         if params[:u_c] == "u"
-            if params[:username]
-               find_user_by_username
+
+            if !params[:username].blank?
+               User.find_user_by_username
                if @user
                 session[:user_id] = user.id
                 redirect_to user_path(@user)
-
                else render "sessions/new"
                end
-            elsif params[:email]
-                find_user_by_email
+
+            elsif !params[:email].blank?
+                User.find_user_by_email
                 if @user
                     session[:user_id] = @user.id
                     redirect_to user_path(@user)
@@ -55,21 +57,23 @@ class SessionsController < ApplicationController
                     render "sessions/new"
                 end
             end
-        elsif params [:u_c] == "c"
-            if params[:username]
+
+        elsif params[:u_c] == "c"
+
+            if !params[:username].blank?
                 find_creator_by_username
                 if @creator
                     session[:creator_id] = @creator.id
                     redirect_to creator_path(@creator)
-
-                else render "sessions/new"
+                else 
+                    render "sessions/new"
                 end
-            elsif params[:email]
+
+            elsif !params[:email].blank?
                 find_creator_by_email
                 if @creator
                     session[:creator_id] = @creator.id
                     redirect_to creator_path(@creator)
-
                 else
                     render "sessions/new"
                 end
@@ -79,6 +83,14 @@ class SessionsController < ApplicationController
         else
             render "sessions/new"
         end
+    end
+
+    def find_creator_by_username
+        @creator = Creator.find_by(username: params[:username])
+    end
+
+    def find_creator_by_email
+        @creator = Creator.find_by(email: params[:email])
     end
 
 

@@ -4,9 +4,11 @@ class MerchandiseCategoriesController < ApplicationController
     def index
         @categories = MerchandiseCategory.all
     end
+
     def show
         @category = MerchandiseCategory.find_by(params[:id])
     end
+
     def new
     end
     def create
