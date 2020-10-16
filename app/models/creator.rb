@@ -6,6 +6,7 @@ class Creator < ApplicationRecord
     validates :email, :username, uniqueness: true
     has_secure_password
     validates :promo_discount, inclusion: {in: (0..100)}
+    
 
     def find_creator_by_username
         @creator = Creator.find_by(username: params[:username])

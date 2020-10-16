@@ -1,6 +1,8 @@
 class MerchandisesController < ApplicationController
+    #before_action :set_layout
     before_action :find_merch, only: [:show, :edit, :update, :delete]
-    before_action :find_reviews_by_merch, only: [:show]
+    #!before_action :find_reviews_by_merch, only: [:show]
+    
     def index
         @merchandises = Merchandise.all
     end
@@ -13,7 +15,7 @@ class MerchandisesController < ApplicationController
     def create
         merch = Merchandise.new(merch_params)
         if merch.save
-            redirect_to merchandise_path(merchandise)
+            redirect_to merchandise_path(merch)
         else
             render "merchandises/new"
         end

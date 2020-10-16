@@ -1,2 +1,3 @@
-<%= @merchandise.name %>
-<%= @merchandise.creator_name%>
+<%= @merchandise.title %>
+<%= link_to @merchandise.creator_name, creator_path(@merchandise.creator)%>
+Price: <%= @merchandise.price %>

@@ -1,4 +1,5 @@
 class SalesController < ApplicationController
+    #before_action :set_layout
     before_action :find_sale, only: [:show, :edit, :update, :delete]
     
     def index

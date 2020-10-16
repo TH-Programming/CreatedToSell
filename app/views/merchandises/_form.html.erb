@@ -1,7 +1,7 @@
 <%= form_for @merchandise do |f| %>
 Title<%= f.text_field :title %>
 Desc<%= f.text_area :description %>
-Category<%= f.collection_select :merchandise, :id, MerchandiseCategory.all, :id, :name %>
+Category<%= f.collection_select :id, MerchandiseCategory.all, :id, :name %>
 Price<%= f.text_field :price %>
 <%= f.submit "Sell It!!" %>
-<%= end %>
+<% end %>

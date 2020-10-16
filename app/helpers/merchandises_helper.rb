@@ -1,2 +1,4 @@
 module MerchandisesHelper
+
+
 end
