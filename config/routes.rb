@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :sales
   resources :merchandises
   resources :users do
+    # resources :sales,
     resources :merchandises
   end
   resources :creators do
+    # resources :sales,
     resources :merchandises
   end
   get "/login", to: "sessions#new"

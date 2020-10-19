@@ -3,10 +3,22 @@ class SalesController < ApplicationController
     before_action :find_sale, only: [:show, :edit, :update, :delete]
     
     def index
-        
+        if params[:user_id]
+
+        elsif params[:creator_id]
+
+        else
+            redirect_to :root
+        end
     end
     def show
+        if params[:user_id]
 
+        elsif params[:creator_id]
+
+        else
+            redirect_to :root
+        end  
     end
     def new
         @sale= Sale.new
