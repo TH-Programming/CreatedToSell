@@ -2,11 +2,11 @@
 <%= render partial: "users/info", locals: {user: @creator} %>
 <% if current_creator.id == @creator.id %>
 <%= button_to "Edit Profile", edit_creator_path(@creator), method: "get" %>
-<%= button_to "Add Merchandise", new_merchandise_path, method: "get" %>
+<%= button_to "Add Merchandise", new_creator_merchandise_path(@creator), method: "get" %>
 <% end %>
 
 <% @creator.merchandises.each do |merch|%>
-<%= link_to merch.title, creator_merchandise_path(merch) %>
+<%= link_to merch.title, creator_merchandise_path(@creator, merch) %>
 <%= merch.price %>
 <%= merch.description%>
 <%= button_to "add to cart", cart_add_path%>

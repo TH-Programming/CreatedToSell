@@ -21,11 +21,11 @@ class SessionsController < ApplicationController
     end
 
     def current_user
-        User.find_by(session[:user_id])
+        User.find_by(id: session[:user_id])
     end
 
     def current_creator
-        Creator.find_by(session[:creator_id])
+        Creator.find_by(id: session[:creator_id])
     end
 
     def current_user_or_creator?

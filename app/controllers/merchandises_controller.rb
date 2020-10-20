@@ -8,6 +8,7 @@ class MerchandisesController < ApplicationController
             @merchandises = Merchandise.find_by(creator_id: params[:creator_id])
         else
             @merchandises = Merchandises.all
+        end
     end
 
     def show
@@ -22,6 +23,7 @@ class MerchandisesController < ApplicationController
     end
 
     def create
+        creator = current_creator
         merch = creator.merchandises.build(merch_params)
         if merch.save
             redirect_to merchandise_path(merch)

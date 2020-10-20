@@ -4,10 +4,13 @@ class MerchandiseReviewsController < ApplicationController
  #! A merch review will be writen at the bottom of the merchandise show page.
 #! these routes will end up nested under merchandises
     def create
+       raise params.inspect
         review = MerchandiseReview.new(review_params)
         if review.save
             redirect_to merchandise_path(params[:id])
         else
+            @errors = review.errors
+            redirect_to merchandise_path(params[:merchandise_id])
             #! need to reload the merch show page that user
             #! is currently viewing.
         end
@@ -19,12 +22,13 @@ class MerchandiseReviewsController < ApplicationController
 
     def update
         @review.update(review_params)
-        redirect_to
+        redirect_to 
     end
 
     def delete
             @review.delete
-            redirect_to
+            
+            redirect_to merchandise_path(params[:merchandise_id])
     end
 
     private
