@@ -20,7 +20,7 @@ class MerchandisesController < ApplicationController
         @merchandise = creator.merchandises.build
     end
     def create
-        merch = Merchandise.new(merch_params)
+        merch = creator.merchandises.build(merch_params)
         if merch.save
             redirect_to merchandise_path(merch)
         else
@@ -43,7 +43,7 @@ class MerchandisesController < ApplicationController
 
     private
     def merch_params
-        params.require(:merchandise).permit(:title, :description, :price)
+        params.require(:merchandise).permit(:title, :description, :price, :creator_id)
     end
 
     def find_merch

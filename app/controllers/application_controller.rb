@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 #! Add errors to forms, and field_with_errors (look this up)
 #! Omniauth
 #! create sales and cart
+#! Shouldnt need nested forms, use nested routes to create associations
+#! You're close you've got this
  
 
 def set_layout
