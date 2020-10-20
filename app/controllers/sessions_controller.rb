@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    #before_action :set_layout
+    layout :set_layout
 
 
     def new
@@ -71,7 +71,6 @@ class SessionsController < ApplicationController
             end
 
         elsif params[:u_c] == "c"
-
             if !params[:username].blank?
                 find_creator_by_username
                 if @creator

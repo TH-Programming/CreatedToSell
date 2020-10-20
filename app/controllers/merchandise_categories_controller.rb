@@ -1,5 +1,5 @@
 class MerchandiseCategoriesController < ApplicationController
-    #before_action :set_layout
+    layout :set_layout
 
     def index
         @categories = MerchandiseCategory.all

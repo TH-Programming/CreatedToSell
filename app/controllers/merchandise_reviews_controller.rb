@@ -1,5 +1,5 @@
 class MerchandiseReviewsController < ApplicationController
-    #before_action :set_layout
+    layout :set_layout
     before_action :find_review, only: [:edit, :update, :delete]
  #! A merch review will be writen at the bottom of the merchandise show page.
 #! these routes will end up nested under merchandises

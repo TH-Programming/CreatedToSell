@@ -1,5 +1,5 @@
 class MerchandisesController < ApplicationController
-    #before_action :set_layout
+    layout :set_layout
     before_action :find_merch, only: [:show, :edit, :update, :delete]
     #!before_action :find_reviews_by_merch, only: [:show]
 
@@ -9,16 +9,18 @@ class MerchandisesController < ApplicationController
         else
             @merchandises = Merchandises.all
     end
+
     def show
         if params[:creator_id]
             @merchandise = Merchandises.creator(params[:creator_id])
         end
- 
     end
+
     def new
         creator = Creator.find_by(id: params[:creator_id])
         @merchandise = creator.merchandises.build
     end
+
     def create
         merch = creator.merchandises.build(merch_params)
         if merch.save
@@ -27,14 +29,16 @@ class MerchandisesController < ApplicationController
             render "merchandises/new"
         end
     end
-    def edit
 
+    def edit
     end
+
     def update
         @merchandise.update(merch_params)
 
         redirect_to merchandise_path(@merchandise)
     end
+
     def delete
         @merchandise.delete
 

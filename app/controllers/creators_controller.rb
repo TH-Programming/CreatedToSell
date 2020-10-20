@@ -1,5 +1,5 @@
 class CreatorsController < ApplicationController
-    #before_action :set_layout
+    layout :set_layout
     before_action :find_creator, only: [:show, :edit, :update, :delete]
     
     

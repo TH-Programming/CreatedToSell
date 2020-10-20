@@ -6,11 +6,11 @@ class User < ApplicationRecord
     validates :email, :username, uniqueness: true
     has_secure_password
     
-    def find_user_by_username
-        @user = User.find_by(username: params[:username])
+    def find_user_by_username(username)
+        @user = User.find_by(username: username)
     end
 
-    def find_user_by_email
-        @user = User.find_by(email: params[:email])
+    def find_user_by_email(email)
+        @user = User.find_by(email: email)
     end
 end

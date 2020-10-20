@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-#before_action :set_layout
+    layout :set_layout
 
 #! to Do: add belongs_to: relationships in migrations (not has_many sides)
 #! Add errors to forms, and field_with_errors (look this up)
@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
 
 def set_layout
     if session[:user_id]
-        :layout => "user"
+        "user"
     elsif session[:creator_id]
-        :layout => "creator"
+        "creator"
     else
-        :layout => "application"
+        "application"
     end
 end
 end

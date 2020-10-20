@@ -1,15 +1,17 @@
 class UsersController < ApplicationController   
-   # before_action :set_layout
-before_action :find_user, only: [:show, :edit, :update, :delete]
+    layout :set_layout
+    before_action :find_user, only: [:show, :edit, :update, :delete]
 
     def index
     end
-    def show
 
+    def show
     end
+
     def new
         @user = User.new
     end
+
     def create
         # if params[:user][:email] == params[:user][:email_confirmation] && params[:user][:password] == params[:user][:password_confirmation]
             # sanitize_params
@@ -23,14 +25,14 @@ before_action :find_user, only: [:show, :edit, :update, :delete]
             end
         # end
     end
+
     def edit
-
     end
+
     def update
-
     end
-    def delete
-        
+
+    def delete    
     end
 
     private
