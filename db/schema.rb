@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_204504) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.integer "merchandise_ids"
+    t.integer "merchandise_id"
   end
 
   create_table "users", force: :cascade do |t|

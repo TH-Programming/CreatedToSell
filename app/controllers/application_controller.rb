@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 #! to Do: add belongs_to: relationships in migrations (not has_many sides)
 #! Add errors to forms, and field_with_errors (look this up)
 #! Omniauth
-#! create sales and cart
+#! create sales
 #! Shouldnt need nested forms, use nested routes to create associations
 #! You're close you've got this
  

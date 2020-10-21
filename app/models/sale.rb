@@ -1,5 +1,5 @@
 class Sale < ApplicationRecord
-    has_many :merchandises
+    has_and_belongs_to_many :merchandises
     belongs_to :user
     has_many :creators, through: :merchandises
     
