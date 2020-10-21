@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_204504) do
+ActiveRecord::Schema.define(version: 2020_10_21_195531) do
 
   create_table "creators", force: :cascade do |t|
     t.string "email"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_204504) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "merchandise_id"
   end
 
 # Could not dump table "merchandises" because of following StandardError

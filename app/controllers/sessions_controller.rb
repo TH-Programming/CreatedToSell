@@ -9,13 +9,15 @@ class SessionsController < ApplicationController
         user_or_creator_login
     end
 
-    def delete
+    def destroy
         if session[:user_id]
-            session[:user_id].clear
+            session.delete :user_id
+            redirect_to :root
         elsif session[:creator_id]
-            session[:creator_id].clear
+            session.delete :creator_id
+            redirect_to :root
         else
-            render :root
+            redirect_to :root
         end
     end
 

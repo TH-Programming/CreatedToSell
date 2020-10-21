@@ -1,4 +1,6 @@
-<% @merchandises.each do |merch %>
-<%= link_to merch.name, merchandise_path(@merchandise)%>
+<% @merchandises.each do |merch| %>
+<p><%= link_to merch.title, merchandise_path(@merchandise)%></p>
+<p><%= merch.price %></p>
+<p><%= merch.description %></p>
 <%= link_to merch.creator_name, creator_path(@merchandise.creator)%>
-<%= merch.price%>
+<% end %>

@@ -11,14 +11,17 @@ class SalesController < ApplicationController
     end
     def show
         if current_user_or_creator?
-            curent_user_or_creator.sales.find_by{id: params[:id]}
+            curent_user_or_creator.sales.find_by(id: params[:id])
         else
             redirect_to :root
         end  
     end
     def new
-        @sale= Sale.new
-        
+        if params[:merchandise_id]
+            @sale= sale.new
+            @merchandise = Merchandise.find_by(params[:merchandise_id])
+        else
+
     end
     def create
         session[:user_cart].map {|id| Merchandise.find_by(id: id)}

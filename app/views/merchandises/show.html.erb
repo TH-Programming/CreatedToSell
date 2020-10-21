@@ -1,3 +1,8 @@
 <%= @merchandise.title %>
-<%= link_to @merchandise.creator_name, creator_path(@merchandise.creator)%>
-Price: <%= @merchandise.price %>
+<p><%= link_to @merchandise.creator_name, creator_path(@merchandise.creator)%></p>
+<p>Price: <%= @merchandise.price %></p>
+
+<% if params[:creator_id] == session[:creator_id] %>
+    <%= button_to "Edit Item", edit_merchandise_path(@merchandise), method: "get" %>
+    <%= button_to "Delete Item", "Merchandises#delete", method: "get" %>
+<% end %>

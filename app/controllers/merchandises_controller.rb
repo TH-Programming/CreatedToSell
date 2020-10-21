@@ -16,7 +16,7 @@ class MerchandisesController < ApplicationController
     end
 
     def new
-        if params[:creator_id] && current_creator == params[:creator_id]
+        if params[:creator_id] && session[:creator_id] == params[:creator_id]
             creator = Creator.find_by(id: params[:creator_id])
             @merchandise = creator.merchandises.build
         else
