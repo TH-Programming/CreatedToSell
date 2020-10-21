@@ -4,8 +4,8 @@ class Creator < ApplicationRecord
     has_many :categories, through: :merchandises
     validates :email, :username, presence: true
     validates :email, :username, uniqueness: true
-    has_secure_password
     validates :promo_discount, inclusion: {in: (0..100)}
+    has_secure_password
     
 
     def find_creator_by_username

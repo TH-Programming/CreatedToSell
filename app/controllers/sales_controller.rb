@@ -3,41 +3,34 @@ class SalesController < ApplicationController
     before_action :find_sale, only: [:show, :edit, :update, :delete]
     
     def index
-        if params[:user_id]
-
-        elsif params[:creator_id]
-
+        if current_user_or_creator?
+            @sales = current_user_or_creator.sales
         else
             redirect_to :root
         end
     end
     def show
-        if params[:user_id]
-
-        elsif params[:creator_id]
-
+        if current_user_or_creator?
+            curent_user_or_creator.sales.find_by{id: params[:id]}
         else
             redirect_to :root
         end  
     end
     def new
         @sale= Sale.new
+        
     end
     def create
-        
-    end
-    def edit
+        session[:user_cart].map {|id| Merchandise.find_by(id: id)}
+        binding.pry
+        #! research how to implement has_and_belongs_to_many foreign ID's
+        params[:user_id] = current_user
 
     end
-    def update
 
-    end
-    def delete
-        
-    end
 
     private
     def sale_params
-        params.require(:sale).permit(:user_id, :creator_id, :promo_code, :tip)
+        params.require(:sale).permit(:user_id, :creator_id, :promo_code, :tip, )
     end
 end

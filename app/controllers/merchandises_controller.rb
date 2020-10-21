@@ -5,21 +5,23 @@ class MerchandisesController < ApplicationController
 
     def index
         if params[:creator_id]
-            @merchandises = Merchandise.find_by(creator_id: params[:creator_id])
+            @merchandises = Merchandise.by_creator(params[:creator_id])
         else
-            @merchandises = Merchandises.all
+            @merchandises = Merchandise.all
         end
     end
 
     def show
-        if params[:creator_id]
-            @merchandise = Merchandises.creator(params[:creator_id])
-        end
+        
     end
 
     def new
-        creator = Creator.find_by(id: params[:creator_id])
-        @merchandise = creator.merchandises.build
+        if params[:creator_id] && current_creator == params[:creator_id]
+            creator = Creator.find_by(id: params[:creator_id])
+            @merchandise = creator.merchandises.build
+        else
+            redirect_to :root
+        end
     end
 
     def create

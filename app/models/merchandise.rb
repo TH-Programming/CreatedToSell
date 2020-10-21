@@ -4,13 +4,11 @@ class Merchandise < ApplicationRecord
     has_many :sales
     belongs_to :creator
     validates :title, :description, :price, presence: true
-    # scope :by_creator -> (id) {WHERE(:creator_id) == ?, id }
-    # scope :by_name -> (name) {WHERE(:name) == ?, name}
+    scope :by_creator, -> (id) { where("creator_id == ?", id) }
+    scope :by_name, -> (name) { where("name == ?", name) }
 
 
     def creator_name
-        self.creator.name
+        self.creator.username
     end
-
-
 end

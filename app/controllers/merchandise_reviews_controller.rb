@@ -22,12 +22,13 @@ class MerchandiseReviewsController < ApplicationController
 
     def update
         @review.update(review_params)
-        redirect_to 
+        
+        redirect_to merchandise_path(@review)
     end
 
     def delete
             @review.delete
-            
+
             redirect_to merchandise_path(params[:merchandise_id])
     end
 
