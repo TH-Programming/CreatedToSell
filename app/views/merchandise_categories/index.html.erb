@@ -1,4 +1,4 @@
-<%= @categories.each do |c| %>
-<%= link_to c.name, merchandise_category_path(c) %>
-<%= c.merch_count %>
-<%= end %>
+<% @categories.each do |c| %>
+<p><%= link_to c.name, merchandise_category_path(c) %>
+<%= c.merch_count %></p>
+<% end %>

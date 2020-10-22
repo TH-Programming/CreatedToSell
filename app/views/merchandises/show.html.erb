@@ -6,3 +6,10 @@
     <%= button_to "Edit Item", edit_merchandise_path(@merchandise), method: "get" %>
     <%= button_to "Delete Item", "Merchandises#delete", method: "get" %>
 <% end %>
+
+<%= form_for @review do |f| %>
+<%= f.text_field :title %>
+<%= f.text_area :body %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<% end %>
+

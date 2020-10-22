@@ -12,7 +12,7 @@ class MerchandisesController < ApplicationController
     end
 
     def show
-        
+        @reviews = Merchandise.reviews.last(5)
     end
 
     def new

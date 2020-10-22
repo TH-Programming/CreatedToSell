@@ -21,19 +21,18 @@ class SalesController < ApplicationController
             @sale= sale.new
             @merchandise = Merchandise.find_by(params[:merchandise_id])
         else
+            redirect_to :root
 
     end
     def create
-        session[:user_cart].map {|id| Merchandise.find_by(id: id)}
-        binding.pry
-        #! research how to implement has_and_belongs_to_many foreign ID's
-        params[:user_id] = current_user
+        @sale = User.sales.build(sale_params)
+
 
     end
 
 
     private
     def sale_params
-        params.require(:sale).permit(:user_id, :creator_id, :promo_code, :tip, )
+        params.require(:sale).permit(:user_id, :merchandise_id, :promo_code, :tip)
     end
 end

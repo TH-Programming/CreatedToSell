@@ -3,4 +3,5 @@
 <p><%= merch.price %></p>
 <p><%= merch.description %></p>
 <%= link_to merch.creator_name, creator_path(@merchandise.creator)%>
+<%= button_to "Buy", new_merchandise_sale_path%>
 <% end %>
