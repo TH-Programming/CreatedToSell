@@ -7,12 +7,13 @@
     <%= button_to "Delete Item", "Merchandises#delete", method: "get" %>
 <% end %>
 
-<% if current_user %>
-<%= form_for @review do |f| %>
-<%= f.text_field :title %>
-<%= f.text_area :body %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.submit %>
-<% end %>
+<% if current_user.merchandises.include?(@merchandise) %>
+    <%= form_for @review do |f| %>
+    <h5>Write A Review</h5>
+    <%= f.text_field :title %><br>
+    <%= f.text_area :body %><br>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit %>
+    <% end %>
 <% end %>
 

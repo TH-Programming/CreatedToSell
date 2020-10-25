@@ -1,1 +1,11 @@
 <h1>New Sale</h1>
+<%= @merchandise.title %> <>
+<%= @merchandise.price %>
+<%= form_for @sale do |f|%>
+<%# <%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :merchandise_id, value: params[:merchandise_id] %>
+If the seller has given you a PromoCode please enter it here.
+<%= f.text_field :promo_code %>
+<%= f.submit "Place Order" %>
+<% end %>
+

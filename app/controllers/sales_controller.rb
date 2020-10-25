@@ -36,12 +36,25 @@ class SalesController < ApplicationController
     end
 
     def create
-        @sale = User.sales.build(sale_params)
+        @sale = current_user.sales.build(sale_params)
+        if @sale.save
+            redirect_to user_sale_path(current_user, @sale)
+        else 
+            render "sales/new"
+        end
     end
 
 
     private
     def sale_params
         params.require(:sale).permit(:user_id, :merchandise_id, :promo_code, :tip)
+    end
+
+    def current_user
+        User.find_by(id: session[:user_id])
+    end
+
+    def find_sale
+        @sale = Sale.find_by(id: params[:id])
     end
 end

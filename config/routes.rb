@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :sales, :merchandises, only: [:index, :show]
   end
   resources :creators do
-    resources :sales, :merchandises, only: [:index, :show]
+    resources :sales, :merchandises, only: [:index, :show, :new, :create]
   end
   get :root, to: "merchandises#index"
   get "/login", to: "sessions#new"

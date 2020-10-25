@@ -1,0 +1,6 @@
+<%= @sales.each do |s| %>
+<h1>SALE #<%= s.id %></h1>
+
+<h2><%= merch_price(s) %></h2>
+<p>Sold By: <%=merch_creator_name(s)%></p>
+<% end %>
