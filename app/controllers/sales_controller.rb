@@ -28,7 +28,7 @@ class SalesController < ApplicationController
 
     def new
         if params[:merchandise_id]
-            @sale= sale.new
+            @sale= Sale.new
             @merchandise = Merchandise.find_by(params[:merchandise_id])
         else
             redirect_to :root

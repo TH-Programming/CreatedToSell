@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   resources :merchandise_categories, only: [:index, :show]
   resources :merchandise_reviews, only: [:new, :create, :edit, :update]
   resources :sales
-  resources :merchandises
+  resources :merchandises do
+    resources :sales, only: [:new, :create]
+  end
   resources :users do
-     resources :sales, :merchandises, only: [:index, :show]
-    # resources :merchandises, only: [:index, :show]
+    resources :sales, :merchandises, only: [:index, :show]
   end
   resources :creators do
-    # resources :sales,
-    resources :merchandises
+    resources :sales, :merchandises, only: [:index, :show]
   end
   get :root, to: "merchandises#index"
   get "/login", to: "sessions#new"
