@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :sales
   resources :merchandises
   resources :users do
-    # resources :sales,
-    resources :merchandises
+     resources :sales, :merchandises, only: [:index, :show]
+    # resources :merchandises, only: [:index, :show]
   end
   resources :creators do
     # resources :sales,

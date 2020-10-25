@@ -41,8 +41,15 @@ ActiveRecord::Schema.define(version: 2020_10_21_195531) do
     t.integer "merchandise_id"
   end
 
-# Could not dump table "merchandises" because of following StandardError
-#   Unknown type 'foreign_key' for column 'creator_id'
+  create_table "merchandises", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "creator_id"
+    t.integer "merchandise_category_id"
+  end
 
   create_table "sales", force: :cascade do |t|
     t.string "promo_code"

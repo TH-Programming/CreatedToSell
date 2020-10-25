@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
 #! Shouldnt need nested forms, use nested routes to create associations
 #! You're close you've got this
  
-
+def current_creator
+    Creator.find_by(id: session[:creator_id])
+end
     def set_layout
         if session[:user_id]
             "user"

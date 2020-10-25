@@ -7,9 +7,12 @@
     <%= button_to "Delete Item", "Merchandises#delete", method: "get" %>
 <% end %>
 
+<% if current_user %>
 <%= form_for @review do |f| %>
 <%= f.text_field :title %>
 <%= f.text_area :body %>
 <%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.submit %>
+<% end %>
 <% end %>
 

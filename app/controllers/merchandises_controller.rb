@@ -12,11 +12,13 @@ class MerchandisesController < ApplicationController
     end
 
     def show
-        @reviews = Merchandise.reviews.last(5)
+        @reviews = @merchandise.merchandise_reviews.last(5)
+        @review = @merchandise.merchandise_reviews.build
     end
 
     def new
-        if params[:creator_id] && session[:creator_id] == params[:creator_id]
+        #  byebug
+        if params[:creator_id] && session[:creator_id] == params[:creator_id].to_i
             creator = Creator.find_by(id: params[:creator_id])
             @merchandise = creator.merchandises.build
         else
@@ -49,13 +51,13 @@ class MerchandisesController < ApplicationController
         redirect_to merchandises_path
     end
 
+    def find_merch
+        @merchandise = Merchandise.find(params[:id])
+    end
     private
     def merch_params
         params.require(:merchandise).permit(:title, :description, :price, :creator_id)
     end
 
-    def find_merch
-        @merchandise = Merchandise.find_by(id: params[:id])
-    end
 
 end
