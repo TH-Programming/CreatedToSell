@@ -3,7 +3,17 @@ class MerchandisesController < ApplicationController
     before_action :find_merch, only: [:show, :edit, :update, :delete]
     #!before_action :find_reviews_by_merch, only: [:show]
 
+        
+    def search
+        # byebug
+        @merchandise_categories = MerchandiseCategory.all
+        @merchandises = Merchandise.by_category(params[:Category])
+
+        render "merchandises/index"
+    end
+
     def index
+        @merchandise_categories = MerchandiseCategory.all
         if params[:creator_id]
             @merchandises = Merchandise.by_creator(params[:creator_id])
         else
@@ -22,7 +32,7 @@ class MerchandisesController < ApplicationController
             creator = Creator.find_by(id: params[:creator_id])
             @merchandise = creator.merchandises.build
         else
-            redirect_to :root
+            redirect_to '/'
         end
     end
 

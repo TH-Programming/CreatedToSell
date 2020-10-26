@@ -10,7 +10,7 @@ class SalesController < ApplicationController
             user = User.find_by(id: params[:user_id])
             @sales = user.sales
         else
-            redirect_to :root
+            redirect_to '/'
         end  
     end
     
@@ -22,7 +22,7 @@ class SalesController < ApplicationController
             user = User.find_by(id: params[:user_id])
             @sale = user.sales.find_by(id:params[:id])
         else
-            redirect_to :root
+            redirect_to '/'
         end  
     end
 
@@ -31,7 +31,7 @@ class SalesController < ApplicationController
             @sale= Sale.new
             @merchandise = Merchandise.find_by(params[:merchandise_id])
         else
-            redirect_to :root
+            redirect_to '/'
         end
     end
 

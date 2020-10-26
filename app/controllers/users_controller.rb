@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username, :about, :password, :age, :email)
+        params.require(:user).permit(:username, :about, :password, :age, :email, :uid)
     end
 
     def sanitize_params

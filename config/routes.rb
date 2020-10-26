@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   resources :creators do
     resources :sales, :merchandises, only: [:index, :show, :new, :create]
   end
-  get :root, to: "merchandises#index"
+  get "/", to: "merchandises#index"
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"
   get "/logout", to: "sessions#destroy", as: "logout"
+  get "/auth/facebook/callback", to: 'sessions#book_login'
+  post "/merchandises/search", to: 'merchandises#search', as: 'search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

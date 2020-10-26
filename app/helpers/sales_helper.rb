@@ -1,14 +1,18 @@
 module SalesHelper
 
+    def has_sales?
+        current_creator.sales.any?
+    end
+
     def merch_price(sale)
-        sale.merchandise.price
+        Merchandise.find_by(id: sale.merchandise_id).price
     end
 
     def merch_title(sale)
-        sale.merchandise.title
+        Merchandise.find_by(id: sale.merchandise_id).title
     end
 
     def merch_creator_name(sale)
-        sale.merchandise.creator.username
+        Merchandise.find_by(id: sale.merchandise_id).creator.username
     end
 end

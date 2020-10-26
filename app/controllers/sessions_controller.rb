@@ -1,7 +1,16 @@
 class SessionsController < ApplicationController
     layout :set_layout
 
-
+    def book_login
+        # byebug
+        @user = User.find_or_create_by(uid: request.env['omniauth.auth'][:info][:uid]) do |u|
+            u.username = request.env['omniauth.auth'][:info][:name]
+            u.email = request.env['omniauth.auth'][:info][:email]
+        end
+        session[:user_id] = @user.id
+# binding.pry
+        redirect_to '/'
+    end
     def new  
     end
 
@@ -11,9 +20,11 @@ class SessionsController < ApplicationController
 
     def destroy
         if session[:user_id]
+            session.delete :u_c
             session.delete :user_id
             redirect_to :root
         elsif session[:creator_id]
+s           session.delete :u_c
             session.delete :creator_id
             redirect_to :root
         else
@@ -22,16 +33,16 @@ class SessionsController < ApplicationController
     end
 
     #!create a cart and/or add Merchandise to the cart
-    def add_to_cart
-        session[:user_cart] ||= []
-        session[:user_cart] << params[:id]
-        redirect_to merchandise_path(params[:id])
-    end
+    # def add_to_cart
+    #     session[:user_cart] ||= []
+    #     session[:user_cart] << params[:id]
+    #     redirect_to merchandise_path(params[:id])
+    # end
 
-    def remove_from_cart
-        session[:user_cart].delete_if { |merch_id| merch_id == params[:id] }
-        redirect_to merchandise_path(params[:id])
-    end
+    # def remove_from_cart
+    #     session[:user_cart].delete_if { |merch_id| merch_id == params[:id] }
+    #     redirect_to merchandise_path(params[:id])
+    # end
 
     def current_user
         User.find_by(id: session[:user_id])

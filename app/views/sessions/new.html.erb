@@ -2,10 +2,12 @@
    that sets param[:u_c] so controller knows whether to search user or creator
 
 LogIn Form
+<p><%= link_to('Log in with Facebook!', '/auth/facebook') %></p>
+<h2>OR</h2><br>
 <%= form_tag "sessions#create"%>
-Username<%= text_field_tag :username %>
-Email<%= text_field_tag :email %>
-Pasword<%= text_field_tag :password %>
-User<%= radio_button_tag 'u_c', 'u' %>
-Creator<%= radio_button_tag 'u_c', 'c' %>
+Username<%= text_field_tag :username %><br>
+Email<%= text_field_tag :email %><br>
+Pasword<%= text_field_tag :password %><br>
+User<%= radio_button_tag 'u_c', 'u' %><br>
+Creator<%= radio_button_tag 'u_c', 'c' %><br>
 <%= submit_tag "LogIn" %>
