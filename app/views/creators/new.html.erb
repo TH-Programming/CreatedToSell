@@ -1,3 +1,4 @@
+
 <% if @creator.errors.any? %>
   <div id="error_explanation">
     <h2>
@@ -17,12 +18,12 @@ Username
 <%= f.text_field :username %>
 Email
 <%= f.text_field :email %>
-Confirm Email
-<%= f.text_field :email_confirmation %>
+<%# Confirm Email
+<%= f.text_field :email_confirmation %> %>
 Password
 <%= f.text_field :password %>
-Confirm Password
-<%= f.text_field :password_confirmation %>
+<%# Confirm Password
+<%= f.text_field :password_confirmation %> %>
 About
 <%= f.text_field :about %>
 <%= f.submit "Create Account" %>

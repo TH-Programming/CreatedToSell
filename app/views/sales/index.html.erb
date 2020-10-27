@@ -1,6 +1,9 @@
 <%= @sales.each do |s| %>
-<h1>SALE #<%= s.id %></h1>
-
+<% if current_user %>
+<h1>SALE #<%=link_to s.id, user_sale_path(current_user.id, s) %></h1>
+<% elsif current_creator %>
+<h1>SALE #<%= link_to s.id, creator_sale_path(current_creator.id, s) %></h1>
+<% end %>
 <h2><%= merch_price(s) %></h2>
 <p>Sold By: <%=merch_creator_name(s)%></p>
 <% end %>

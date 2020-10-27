@@ -13,13 +13,14 @@
     </ul>
   </div>
 <% end %>
-<%= @merchandise.title %> <>
-<%= @merchandise.price %>
+<p><%= @merchandise.title %> <>
+<%= @merchandise.price %></p>
 <%= form_for @sale do |f|%>
 <%# <%= f.hidden_field :user_id, value: current_user.id %>
 <%= f.hidden_field :merchandise_id, value: params[:merchandise_id] %>
-If the seller has given you a PromoCode please enter it here.
-<%= f.text_field :promo_code %>
-<%= f.submit "Place Order" %>
+Tip Amount(optional)<%= f.text_field :tip %>
+<p>Please Enter Your Shipping Address:</p>
+<p><%= f.text_field :shipping_address %></p>
+<p><%= f.submit "Place Order" %></p>
 <% end %>
 

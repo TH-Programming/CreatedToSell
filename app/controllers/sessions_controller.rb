@@ -22,13 +22,13 @@ class SessionsController < ApplicationController
         if session[:user_id]
             session.delete :u_c
             session.delete :user_id
-            redirect_to :root
+            redirect_to '/'
         elsif session[:creator_id]
-s           session.delete :u_c
+           session.delete :u_c
             session.delete :creator_id
-            redirect_to :root
+            redirect_to '/'
         else
-            redirect_to :root
+            redirect_to '/'
         end
     end
 

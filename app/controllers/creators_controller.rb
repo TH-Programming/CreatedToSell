@@ -16,19 +16,21 @@ class CreatorsController < ApplicationController
     end
 
     def create
-        if params[:creator][:password] == params[:creator][:password_confirmation]
-            params[:creator].delete_if {|k,v| k=="email_confirmation" || k=="password_confirmation"}
+        # if params[:creator][:password] == params[:creator][:password_confirmation]
+        #     params[:creator].delete_if {|k,v| k=="email_confirmation" || k=="password_confirmation"}
 
-            creator = Creator.create(creator_params)
-            if creator.id
-                session[:creator_id] = creator.id
-                redirect_to creator_path(creator)
+            @creator = Creator.new(creator_params)
+            if @creator.save
+                session[:creator_id] = @creator.id
+                redirect_to creator_path(@creator)
             else
+                @creator = Creator.create(creator_params)
+                
                 render "creators/new"
             end
-        else
-            render "creators/new"
-        end
+        # else
+        #     render "creators/new"
+        # end
     end
 
     def edit

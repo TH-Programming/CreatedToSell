@@ -1,6 +1,6 @@
 
 
 <% @creators.each do |creator|%>
-<%= link_to creator.username, creator_path(creator) %>
-<%= link_to creator.merchandise_count, creator_merchandises_path(creator) %>
+<h4><%= link_to creator.username, creator_path(creator) %></h4>
+<p>Items:<%= link_to creator.merchandise_count, creator_merchandises_path(creator) %></p>
 <% end %>

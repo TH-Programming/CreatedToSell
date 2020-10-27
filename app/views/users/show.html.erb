@@ -1,2 +1,4 @@
 <%= render partial:"info", locals: {user: @user} %>
-
+<% if current_user && current_user.id == params[:id] %>
+    <%= button_to "Edit", edit_user_path(@user), method: "get" %>
+    <% end %>

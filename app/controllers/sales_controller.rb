@@ -5,7 +5,10 @@ class SalesController < ApplicationController
     def index
         if params[:creator_id] && params[:creator_id].to_i == session[:creator_id]
             creator = Creator.find_by(id: params[:creator_id])
-            @sales = creator.sales
+            @sales = creator.merchandises.map do |m|
+                m.sales
+            end
+            @sales = @sales.flatten
         elsif params[:user_id] && params[:user_id].to_i == session[:user_id]
             user = User.find_by(id: params[:user_id])
             @sales = user.sales
@@ -47,7 +50,7 @@ class SalesController < ApplicationController
 
     private
     def sale_params
-        params.require(:sale).permit(:user_id, :merchandise_id, :promo_code, :tip)
+        params.require(:sale).permit(:user_id, :merchandise_id, :promo_code, :tip, :shipping_address)
     end
 
     def current_user

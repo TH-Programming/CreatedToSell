@@ -8,7 +8,7 @@
 <p><%= link_to merch.title, merchandise_path(merch)%></p>
 <p><%= merch.price %></p>
 <p><%= merch.description %></p>
-<%= link_to merch.creator_name, creator_path(merch.creator)%>
+<p><%= link_to merch.creator_name, creator_path(merch.creator)%></p>
 <% if current_user %>
 <%= button_to "Buy", new_merchandise_sale_path(merch), method: "get"%>
 <% end %>
