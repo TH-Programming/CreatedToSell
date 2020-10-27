@@ -40,7 +40,7 @@ class SalesController < ApplicationController
         if @sale.save
             redirect_to user_sale_path(current_user, @sale)
         else 
-            render "sales/new"
+            render :new
         end
     end
 
