@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :merchandise_categories, only: [:index, :show]
-  resources :merchandise_reviews, only: [:new, :create, :edit, :update]
+  get "/", to: "merchandises#index"
+  get "/login", to: "sessions#new"
+  post "/sessions", to: "sessions#create"
+  get "/logout", to: "sessions#destroy", as: "logout"
+  get "/auth/facebook/callback", to: 'sessions#book_login'
+  post "/merchandises/search", to: 'merchandises#search', as: 'search'
   resources :sales
+  resources :merchandise_reviews, only: [:new, :create, :edit, :update]
   resources :merchandises do
     resources :sales, only: [:new, :create]
   end
@@ -11,11 +16,5 @@ Rails.application.routes.draw do
   resources :creators do
     resources :sales, :merchandises, only: [:index, :show, :new, :create]
   end
-  get "/", to: "merchandises#index"
-  get "/login", to: "sessions#new"
-  post "/sessions", to: "sessions#create"
-  get "/logout", to: "sessions#destroy", as: "logout"
-  get "/auth/facebook/callback", to: 'sessions#book_login'
-  post "/merchandises/search", to: 'merchandises#search', as: 'search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

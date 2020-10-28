@@ -7,9 +7,10 @@ class SessionsController < ApplicationController
             u.username = request.env['omniauth.auth'][:info][:name]
             u.email = request.env['omniauth.auth'][:info][:email]
         end
+        # byebug
         session[:user_id] = @user.id
-# binding.pry
-        redirect_to '/'
+
+        redirect_to user_path(@user)
     end
     def new  
     end
@@ -24,7 +25,7 @@ class SessionsController < ApplicationController
             session.delete :user_id
             redirect_to '/'
         elsif session[:creator_id]
-           session.delete :u_c
+            session.delete :u_c
             session.delete :creator_id
             redirect_to '/'
         else
@@ -75,16 +76,17 @@ class SessionsController < ApplicationController
         if params[:u_c] == "u"
 
             if !params[:username].blank?
-               User.find_user_by_username
+               @user = User.find_by(username: params[:username])
                if @user
                 session[:user_id] = @user.id
 
                 redirect_to user_path(@user)
-               else render "sessions/new"
+               else 
+                render "sessions/new"
                end
 
             elsif !params[:email].blank?
-                User.find_user_by_email
+                @user = User.find_by(email: params[:email])
                 if @user
                     session[:user_id] = @user.id
 
@@ -96,7 +98,7 @@ class SessionsController < ApplicationController
 
         elsif params[:u_c] == "c"
             if !params[:username].blank?
-                find_creator_by_username
+                @creator = Creator.find_by(username: params[:username])
                 if @creator
                     session[:creator_id] = @creator.id
                     redirect_to creator_path(@creator)
@@ -105,7 +107,7 @@ class SessionsController < ApplicationController
                 end
 
             elsif !params[:email].blank?
-                find_creator_by_email
+                @creator = Creator.find_by(email: params[:email])
                 if @creator
                     session[:creator_id] = @creator.id
                     redirect_to creator_path(@creator)
@@ -116,15 +118,9 @@ class SessionsController < ApplicationController
                 render "sessions/new"
             end
         else
+            flash[:alert] = "Please choose User or Creator"
             render "sessions/new"
         end
     end
 
-    def find_creator_by_username
-        @creator = Creator.find_by(username: params[:username])
-    end
-
-    def find_creator_by_email
-        @creator = Creator.find_by(email: params[:email])
-    end
 end

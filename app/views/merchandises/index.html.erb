@@ -10,6 +10,6 @@
 <p><%= merch.description %></p>
 <p><%= link_to merch.creator_name, creator_path(merch.creator)%></p>
 <% if current_user %>
-<%= button_to "Buy", new_merchandise_sale_path(merch), method: "get"%>
+<%# <%= button_to "Buy", method: "get", new_merchandise_sale_path(merch.id)%>
 <% end %>
 <% end %>
