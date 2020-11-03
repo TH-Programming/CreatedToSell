@@ -1,10 +1,9 @@
 class MerchandisesController < ApplicationController
     layout :set_layout
     before_action :find_merch, only: [:show, :edit, :update, :delete]
-    #!before_action :find_reviews_by_merch, only: [:show]
 
         
-    def search
+    def filter
         @merchandise_categories = MerchandiseCategory.all
         @merchandises = Merchandise.by_category(params[:category])
 
@@ -48,21 +47,22 @@ class MerchandisesController < ApplicationController
     end
 
     def update
-        @merchandise.update(merch_params)
-        #! if else
-        redirect_to merchandise_path(@merchandise)
+        if @merchandise.update(merch_params)
+            redirect_to merchandise_path(@merchandise)
+        else
+            render :edit
+        end
     end
 
     def delete
         @merchandise.delete
-
         redirect_to merchandises_path
     end
 
+    private
     def find_merch
         @merchandise = Merchandise.find(params[:id])
     end
-    private
     def merch_params
         params.require(:merchandise).permit(:title, :description, :price, :creator_id ,:merchandise_category_id)
     end

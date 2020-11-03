@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "/sessions", to: "sessions#create"
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/auth/facebook/callback", to: 'sessions#book_login'
-  post "/merchandises/search", to: 'merchandises#search', as: 'search'
+  post "/merchandises/filter", to: 'merchandises#filter', as: 'filter'
   resources :sales
   resources :merchandise_reviews, only: [:new, :create, :edit, :update]
   resources :merchandises do

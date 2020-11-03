@@ -1,5 +1,8 @@
 module SessionsHelper
 
+    # def current_user
+    #     session[:user_id] ? true:false
+    # end
     def current_user_or_creator?
         if session[:user_id] || session[:creator_id]
             true

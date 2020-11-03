@@ -43,7 +43,7 @@ class SalesController < ApplicationController
         if @sale.save
             redirect_to user_sale_path(current_user, @sale)
         else 
-            render :new
+            redirect_to new_merchandise_sale_path(params[:sale][:merchandise_id])
         end
     end
 

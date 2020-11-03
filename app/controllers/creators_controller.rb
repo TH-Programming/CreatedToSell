@@ -19,8 +19,7 @@ class CreatorsController < ApplicationController
             session[:creator_id] = @creator.id
             redirect_to creator_path(@creator)
         else
-            @creator = Creator.create(creator_params)
-            
+            @creator = Creator.create(creator_params)     
             render "creators/new"
         end
     end
@@ -30,8 +29,7 @@ class CreatorsController < ApplicationController
 
     def update
         if @creator.update(creator_params)
-#! use if in line 38, => redirect to 40. else rerender
-        redirect_to creator_path(@creator)
+            redirect_to creator_path(@creator)
         else
             render :edit
         end

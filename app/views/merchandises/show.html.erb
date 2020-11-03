@@ -1,6 +1,7 @@
-<h2><%= @merchandise.title %></h2>
-<p><%= link_to @merchandise.creator_name, creator_path(@merchandise.creator)%></p>
-<p>Price: <%= @merchandise.price %></p>
+<h2><%= @merchandise.title %><br>
+Price: <%= @merchandise.price %></h2>
+<p>Sold By: <%= link_to @merchandise.creator_name, creator_path(@merchandise.creator)%><br>
+<%= @merchandise.description %>
 
 <% if !current_user && params[:creator_id] == session[:creator_id] %>
     <%= button_to "Edit Item", edit_merchandise_path(@merchandise), method: "get" %>
@@ -8,16 +9,18 @@
     <% elsif current_user %>
     <%= button_to "Buy", new_merchandise_sale_path(@merchandise), method: "get" %>
 <% end %>
-
+<p>---------------------------------------</p>
+<h1>Reviews: <%= @reviews.length %></h1>
 <% @reviews.each do |review| %>
-<h3><%= review.title %></h3>
+<h4><%= review.title %></h4>
 <p><%= review.body %> </p>
-<p><%= review.rating %> </p>
+<p>Rating: <strong><%= review.rating %></strong></p>
 <% end %>
 
 <% if current_user && current_user.merchandises.include?(@merchandise) %>
+<h3>It seems you've purchased this product in tha past!<br>
+Please write a review:</h3>
     <%= form_for @review do |f| %>
-    <h5>Write A Review</h5>
     Title<br>
     <%= f.text_field :title %><br>
     Review<br>

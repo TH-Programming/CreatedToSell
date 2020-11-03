@@ -1,15 +1,12 @@
-<%= form_tag search_path  %>
+<%= form_tag filter_path  %>
 <%= select_tag "category", options_from_collection_for_select(@merchandise_categories, :id, :name) %>
 <%= submit_tag "Filter" %>
 
 
 
 <% @merchandises.each do |merch| %>
-<p><%= link_to merch.title, merchandise_path(merch)%></p>
-<p><%= merch.price %></p>
+<h1><%= link_to merch.title, merchandise_path(merch)%></h1>
+<h4><%= merch.price %></h4>
 <p><%= merch.description %></p>
 <p><%= link_to merch.creator_name, creator_path(merch.creator)%></p>
-<% if current_user %>
-<%# <%= button_to "Buy", method: "get", new_merchandise_sale_path(merch.id)%>
-<% end %>
 <% end %>

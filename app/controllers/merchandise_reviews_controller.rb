@@ -4,30 +4,23 @@ class MerchandiseReviewsController < ApplicationController
 
     def create
         @review = MerchandiseReview.new(merchandise_review_params)
-        if @review.save
+        @review.save
             redirect_to merchandise_path(params[:merchandise_review][:merchandise_id])
-        else
-            
-            render 'merchandises/new'
-            #! need to reload the merch show page that user
-            #! is currently viewing.
-        end
     end
 
     def edit
     end
 
     def update
-        if @review.update(review_params)
-        #!if else like creators
-        redirect_to merchandise_path(@review)
+        if @review.update(review_params)s
+            redirect_to merchandise_path(@review)
         else
             render :edit
+        end
     end
 
     def delete
             @review.delete
-
             redirect_to merchandise_path(params[:merchandise_id])
     end
 
