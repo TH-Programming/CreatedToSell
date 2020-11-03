@@ -1,10 +1,17 @@
+<%= form_with model: model, local: :true do |f|  %>
 <p>Username
 <%= f.text_field :username %></p>
 <p>Email
 <%= f.text_field :email %></p>
-<p>Confirm Email
-<%= f.text_field :email_confirmation %></p>
 <p>Password
 <%= f.text_field :password %></p>
-<p>Confirm Password
-<%= f.text_field :password_confirmation %></p>
+About Me:<%= f.text_field :about %>
+<p>location
+<%= f.text_field :location %></p>
+<!--- <p>Set a PromoCode for users to get a discount! 
+ Only you can see your promo code.</p>
+<%= f.text_field :promo_code %>
+<p>Discount (%)<%= f.text_field :promo_discount %> -->
+<%= f.submit button %></p>
+<% end %>
+

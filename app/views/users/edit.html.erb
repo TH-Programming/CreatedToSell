@@ -1,12 +1,1 @@
-<%= form_with model: @user do |f| %>
-<p>Username</p>
-<p><%= f.text_field :username %></p>
-<p>Email</p>
-<p><%= f.text_field :email %></p>
-<p>Password</p>
-<p><%= f.text_field :password %></p>
-<p>About me:</p>
-<p><%= f.text_area :about %></p>
-<p><%= f.submit "Edit Profile" %></p>
-
-<% end %>
+<%= render partial: "creators/form", locals: {model: @user, button: "Edit"}

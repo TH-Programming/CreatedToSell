@@ -5,9 +5,8 @@ class MerchandisesController < ApplicationController
 
         
     def search
-        # byebug
         @merchandise_categories = MerchandiseCategory.all
-        @merchandises = Merchandise.by_category(params[:Category])
+        @merchandises = Merchandise.by_category(params[:category])
 
         render "merchandises/index"
     end
@@ -27,7 +26,6 @@ class MerchandisesController < ApplicationController
     end
 
     def new
-        #  byebug
         if params[:creator_id] && session[:creator_id] == params[:creator_id].to_i
             creator = Creator.find_by(id: params[:creator_id])
             @merchandise = creator.merchandises.build
@@ -51,7 +49,7 @@ class MerchandisesController < ApplicationController
 
     def update
         @merchandise.update(merch_params)
-
+        #! if else
         redirect_to merchandise_path(@merchandise)
     end
 

@@ -1,10 +1,8 @@
 class MerchandiseReviewsController < ApplicationController
     layout :set_layout
     before_action :find_review, only: [:edit, :update, :delete]
- #! A merch review will be writen at the bottom of the merchandise show page.
-#! these routes will end up nested under merchandises
+
     def create
-    #    raise params.inspect
         @review = MerchandiseReview.new(merchandise_review_params)
         if @review.save
             redirect_to merchandise_path(params[:merchandise_review][:merchandise_id])
@@ -17,13 +15,14 @@ class MerchandiseReviewsController < ApplicationController
     end
 
     def edit
-
     end
 
     def update
-        @review.update(review_params)
-        
+        if @review.update(review_params)
+        #!if else like creators
         redirect_to merchandise_path(@review)
+        else
+            render :edit
     end
 
     def delete
@@ -34,7 +33,7 @@ class MerchandiseReviewsController < ApplicationController
 
     private
     def find_review
-        @review = Review.find_by(id: params[:id])
+        @review = MerchandiseReview.find_by(id: params[:id])
     end
 
     def merchandise_review_params

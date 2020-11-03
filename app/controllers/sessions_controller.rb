@@ -2,12 +2,11 @@ class SessionsController < ApplicationController
     layout :set_layout
 
     def book_login
-        # byebug
-        @user = User.find_or_create_by(uid: request.env['omniauth.auth'][:info][:uid]) do |u|
+        @user = User.find_or_create_by(uid: request.env['omniauth.auth'][:uid]) do |u|
+            u.password = request.env['omniauth.auth'][:uid]
             u.username = request.env['omniauth.auth'][:info][:name]
             u.email = request.env['omniauth.auth'][:info][:email]
         end
-        # byebug
         session[:user_id] = @user.id
 
         redirect_to user_path(@user)
@@ -21,7 +20,7 @@ class SessionsController < ApplicationController
 
     def destroy
         if session[:user_id]
-            session.delete :u_c
+            session.delete :u_c     #! can both be deleted in one line? can delete take multiple arguments?
             session.delete :user_id
             redirect_to '/'
         elsif session[:creator_id]
@@ -45,11 +44,11 @@ class SessionsController < ApplicationController
     #     redirect_to merchandise_path(params[:id])
     # end
 
-    def current_user
+    def current_user    #! current user again
         User.find_by(id: session[:user_id])
     end
 
-    def current_creator
+    def current_creator   
         Creator.find_by(id: session[:creator_id])
     end
 

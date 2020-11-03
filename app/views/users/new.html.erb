@@ -1,23 +1,2 @@
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@user.errors.count, "error") %>
-      prohibited this user from being saved:
-    </h2>
- 
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= form_with model: @user do |f| %>
-<p>Username</p>
-<p><%= f.text_field :username %></p>
-<p>Email</p>
-<p><%= f.text_field :email %></p>
-<p>Password</p>
-<p><%= f.text_field :password %></p>
-<p><%= f.submit "Create Account" %></p>
-<% end %>
+<%= render partial: "layouts/errors", locals: { model: @user } %>
+<%= render partial: "creators/form", locals: {model: @user, button: "Edit"}

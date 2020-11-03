@@ -8,7 +8,7 @@ class SalesController < ApplicationController
             @sales = creator.merchandises.map do |m|
                 m.sales
             end
-            @sales = @sales.flatten
+            @sales = @sales.flatten #! is flatten destructive? can this be shortened?
         elsif params[:user_id] && params[:user_id].to_i == session[:user_id]
             user = User.find_by(id: params[:user_id])
             @sales = user.sales
@@ -54,7 +54,7 @@ class SalesController < ApplicationController
     end
 
     def current_user
-        User.find_by(id: session[:user_id])
+        User.find_by(id: session[:user_id])  #!current_user defined multiple times. Where does it need to be?
     end
 
     def find_sale

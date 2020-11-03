@@ -2,13 +2,11 @@ class CreatorsController < ApplicationController
     layout :set_layout
     before_action :find_creator, only: [:show, :edit, :update, :delete]
     
-    
     def index
         @creators = Creator.all
     end
 
-    def show
-        
+    def show     
     end
 
     def new
@@ -16,35 +14,32 @@ class CreatorsController < ApplicationController
     end
 
     def create
-        # if params[:creator][:password] == params[:creator][:password_confirmation]
-        #     params[:creator].delete_if {|k,v| k=="email_confirmation" || k=="password_confirmation"}
-
-            @creator = Creator.new(creator_params)
-            if @creator.save
-                session[:creator_id] = @creator.id
-                redirect_to creator_path(@creator)
-            else
-                @creator = Creator.create(creator_params)
-                
-                render "creators/new"
-            end
-        # else
-        #     render "creators/new"
-        # end
+        @creator = Creator.new(creator_params)
+        if @creator.save
+            session[:creator_id] = @creator.id
+            redirect_to creator_path(@creator)
+        else
+            @creator = Creator.create(creator_params)
+            
+            render "creators/new"
+        end
     end
 
-    def edit
-        
+    def edit     
     end
 
     def update
-        @creator.update(creator_params)
-
+        if @creator.update(creator_params)
+#! use if in line 38, => redirect to 40. else rerender
         redirect_to creator_path(@creator)
+        else
+            render :edit
+        end
     end
 
     def delete
         @creator.destroy
+        redirect_to logout_path
     end
 
     def current_creator

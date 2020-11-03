@@ -16,13 +16,11 @@ class UsersController < ApplicationController
         # if params[:user][:email] == params[:user][:email_confirmation] && params[:user][:password] == params[:user][:password_confirmation]
             # sanitize_params
             @user = User.new(user_params)
-            # byebug
             if @user.save
                 session[:user_id] = @user.id
 
                 redirect_to user_path(@user)
             else
-                byebug
                 render "users/new"
             end
         # end
