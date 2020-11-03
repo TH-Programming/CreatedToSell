@@ -5,7 +5,7 @@
 <%= button_to "Add Merchandise", new_creator_merchandise_path(@creator.id), method: "get" %>
 <% end %>
 
-<% @creator.merchandises.each do |merch|%>
+<% @creator.merchandises.last(5).each do |merch|%>
 <h3><%= link_to merch.title, creator_merchandise_path(@creator, merch) %></h3>
 <h3><%= merch.price %></h3>
 <p><%= merch.description%></p>

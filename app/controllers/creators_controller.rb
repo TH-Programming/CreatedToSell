@@ -40,9 +40,9 @@ class CreatorsController < ApplicationController
         redirect_to logout_path
     end
 
-    def current_creator
-        Creator.find_by(id: session[:creator_id])
-    end
+    # def current_creator
+    #     Creator.find_by(id: session[:creator_id])
+    # end
 
     private
     def find_creator
