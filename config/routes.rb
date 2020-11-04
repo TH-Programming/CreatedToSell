@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :users do
     resources :sales, :merchandises, only: [:index, :show]
+     resources :merchandise_reviews
   end
   resources :creators do
     resources :sales, :merchandises, only: [:index, :show, :new, :create]

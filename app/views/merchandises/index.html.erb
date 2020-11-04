@@ -6,7 +6,7 @@
 
 <% @merchandises.each do |merch| %>
 <h1><%= link_to merch.title, merchandise_path(merch)%></h1>
-<h4><%= merch.price %></h4>
+<h4>$<%= merch.price %></h4>
 <p><%= merch.description %></p>
 <p><%= link_to merch.creator_name, creator_path(merch.creator)%></p>
 <% end %>
