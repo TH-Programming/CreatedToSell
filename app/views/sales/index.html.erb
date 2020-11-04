@@ -1,4 +1,4 @@
-<%= @sales.each do |s| %>
+<% @sales.each do |s| %>
 <% if current_user %>
 <h1>SALE #<%=link_to s.id, user_sale_path(current_user.id, s) %></h1>
 <% elsif current_creator %>
