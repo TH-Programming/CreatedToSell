@@ -4,7 +4,7 @@
 <%= form_tag "/sessions" %>
 Username<%= text_field_tag :username %><br>
 Email<%= text_field_tag :email %><br>
-Pasword<%= text_field_tag :password %><br>
+Pasword<%= password_field_tag :password %><br>
 User<%= radio_button_tag 'u_c', 'u' %><br>
 Creator<%= radio_button_tag 'u_c', 'c' %><br>
 <%= submit_tag "LogIn" %>

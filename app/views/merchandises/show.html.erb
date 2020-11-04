@@ -18,7 +18,7 @@ Price: <%= @merchandise.price %></h2>
 <% end %>
 
 <% if current_user && current_user.merchandises.include?(@merchandise) %>
-<h3>It seems you've purchased this product in tha past!<br>
+<h3>It seems you've purchased this product in the past!<br>
 Please write a review:</h3>
     <%= form_for @review do |f| %>
     Title<br>
