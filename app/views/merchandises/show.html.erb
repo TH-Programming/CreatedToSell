@@ -5,7 +5,7 @@ Price: <%= @merchandise.price %></h2>
 
 <% if current_creator && current_creator.id == params[:creator_id].to_i %>
     <%= button_to "Edit Item", edit_merchandise_path(@merchandise), method: "get" %>
-    <%= button_to "Delete Item", "Merchandises#destroy", method: "delete" %>
+    <%= button_to "Delete Item", merchandises_path(@merchandise), method: :delete %>
     <% elsif current_user %>
     <%= button_to "Buy", new_merchandise_sale_path(@merchandise), method: "get" %>
 <% end %>

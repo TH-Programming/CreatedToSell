@@ -8,7 +8,7 @@ class SalesController < ApplicationController
             @sales = creator.merchandises.map do |m|
                 m.sales
             end
-            @sales = @sales.flatten #! is flatten destructive? can this be shortened?
+            @sales = @sales.flatten 
         elsif params[:user_id] && params[:user_id].to_i == session[:user_id]
             user = User.find_by(id: params[:user_id])
             @sales = user.sales
