@@ -1,5 +1,5 @@
 <% @category.merchandises.each do |merch| %>
-<%= link_to merch.creator_name, creator_path(merch.creator) %>
-<%= link_to merch.title, merch_path(merch) %>
-<%= merch.price %>
+    <%= link_to merch.creator_name, creator_path(merch.creator) %>
+    <%= link_to merch.title, merch_path(merch) %>
+    <%= merch.price %>
 <% end %>

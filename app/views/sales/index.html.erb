@@ -1,9 +1,11 @@
-<% @sales.each do |s| %>
-<% if current_user %>
-<h1>SALE #<%=link_to s.id, user_sale_path(current_user.id, s) %></h1>
-<% elsif current_creator %>
-<h1>SALE #<%= link_to s.id, creator_sale_path(current_creator.id, s) %></h1>
-<% end %>
-<h2><%= merch_price(s) %></h2>
-<p>Sold By: <%=merch_creator_name(s)%></p>
+# loops @sales and displays each
+
+<% @sales.each do |sale| %>
+    <% if current_user %>
+        <h1>SALE #<%=link_to sale.id, user_sale_path(current_user.id, s) %></h1>
+    <% elsif current_creator %>
+        <h1>SALE #<%= link_to sale.id, creator_sale_path(current_creator.id, s) %></h1>
+    <% end %>
+        <h2><%= merch_price(sale) %></h2>
+        <p>Sold By: <%=merch_creator_name(sale)%></p>
 <% end %>

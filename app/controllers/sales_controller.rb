@@ -5,10 +5,11 @@ class SalesController < ApplicationController
     def index
         if params[:creator_id] && params[:creator_id].to_i == session[:creator_id]
             creator = Creator.find_by(id: params[:creator_id])
-            @sales = creator.merchandises.map do |m|
-                m.sales
+            sales = creator.merchandises.map do |merch|
+                merch.sales
             end
-            @sales = @sales.flatten 
+            @sales = sales.flatten 
+
         elsif params[:user_id] && params[:user_id].to_i == session[:user_id]
             user = User.find_by(id: params[:user_id])
             @sales = user.sales

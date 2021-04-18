@@ -13,8 +13,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        # if params[:user][:email] == params[:user][:email_confirmation] && params[:user][:password] == params[:user][:password_confirmation]
-            # sanitize_params
             @user = User.new(user_params)
             if @user.save
                 session[:user_id] = @user.id

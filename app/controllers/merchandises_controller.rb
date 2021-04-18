@@ -59,13 +59,15 @@ class MerchandisesController < ApplicationController
         redirect_to merchandises_path
     end
 
+
     private
+
     def find_merch
         @merchandise = Merchandise.find(params[:id])
     end
+
     def merch_params
         params.require(:merchandise).permit(:title, :description, :price, :creator_id ,:merchandise_category_id)
     end
-
 
 end

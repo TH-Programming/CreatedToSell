@@ -4,43 +4,22 @@
     <title>CreatedToSell</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
-<h1 class="head">CreatedToSell</h1>
-<div class=container>
-  <div class="row">
-    <div class="col">
-      <%= link_to "Home", user_path(current_user)  %>
-    </div>
-    <div class="col">
-      <%= link_to "Find Merchandise", merchandises_path %>
-    </div>
-    <div class="col">
-      <%= link_to "Creators", creators_path %>
-    </div>
-    <div class="col">
-      <%= link_to "Sale History", user_sales_path(current_user) %>
-    </div>
-    <div class="col">
-      <%= link_to "Logout", logout_path %>
-    </div>
-  </div>
-</div>
-  -------------------------------------------------------------------------------------------------------------
+    <h1> CreatedToSell</h1>
 
-
-
-
-
-
-       
+    <ul class = "nav">
+      <li> <%= link_to "Home", user_path(current_user)  %>
+      <li> <%= link_to "Find Merchandise", merchandises_path %>
+      <li> <%= link_to "Creators", creators_path %>
+      <li> <%= link_to "Sale History", user_sales_path(current_user) %>
+      <li> <%= link_to "Logout", logout_path %>
+    </ul>
+    
     <%= yield %>
   </body>
 </html>

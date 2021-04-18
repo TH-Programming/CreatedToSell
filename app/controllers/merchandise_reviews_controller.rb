@@ -7,12 +7,13 @@ class MerchandiseReviewsController < ApplicationController
         if params[:user_id]
             @reviews = MerchandiseReview.by_user(params[:user_id])
         end
-
     end
+
     def create
         @review = MerchandiseReview.new(merchandise_review_params)
         @review.save
-            redirect_to merchandise_path(params[:merchandise_review][:merchandise_id])
+
+        redirect_to merchandise_path(params[:merchandise_review][:merchandise_id])
     end
 
     def edit
@@ -31,7 +32,9 @@ class MerchandiseReviewsController < ApplicationController
             redirect_to merchandise_path(params[:merchandise_id])
     end
 
+    
     private
+    
     def find_review
         @review = MerchandiseReview.find_by(id: params[:id])
     end
