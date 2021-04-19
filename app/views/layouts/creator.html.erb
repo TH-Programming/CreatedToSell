@@ -9,15 +9,21 @@
   </head>
 
   <body>
-    <h1>CreatedToSell</h1>>
-    <ul class = "nav">
-      <li><%= link_to "My Storefront", creator_path(current_creator) %>
-      <li><%= link_to "New Listing", new_creator_merchandise_path(current_creator) %>
-      <li><%= link_to "Sales", creator_sales_path(current_creator) %>
-      <li><%= link_to "Logout", logout_path %>
-    </ul>
-   
-    <%= yield %>
-    
+    <header>
+      <h1><%= link_to "CreatedToSell", "/"%></h1>
+      
+      <ul class = "nav">
+        <li><%= link_to "My Storefront", creator_path(current_creator) %>
+        <li><%= link_to "New Listing", new_creator_merchandise_path(current_creator) %>
+        <li><%= link_to "Sales", creator_sales_path(current_creator) %>
+        <li><%= link_to "Logout", logout_path %>
+      </ul>
+    </header>
+
+    <main>  
+      <%= yield %>
+    </main>
+
+    <%= render partial:"/layouts/footer" %>
   </body>
 </html>

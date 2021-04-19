@@ -9,8 +9,8 @@
   </head>
 
   <body>
-
-    <h1> CreatedToSell</h1>
+  <header>
+    <h1><%= link_to "CreatedToSell", "/"%></h1>
 
     <ul class = "nav">
       <li> <%= link_to "Home", user_path(current_user)  %>
@@ -19,7 +19,13 @@
       <li> <%= link_to "Sale History", user_sales_path(current_user) %>
       <li> <%= link_to "Logout", logout_path %>
     </ul>
-    
+  </header>
+
+  <main>  
     <%= yield %>
+  </main>
+
+  <%= render partial:"/layouts/footer" %>
+
   </body>
 </html>

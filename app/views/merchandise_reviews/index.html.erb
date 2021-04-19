@@ -1,6 +1,8 @@
-<% @reviews.each do |r| %>
-    <%= r.user.username %>
-    <%= r.title %>
-    <%= r.body %>
-    <%= r.rating %>
-<% end %>
+<div class="wrapper">
+    <% @reviews.each do |r| %>
+        <%= r.user.username %>
+        <%= r.title %>
+        <%= r.body %>
+        <%= r.rating %>
+    <% end %>
+</div>
