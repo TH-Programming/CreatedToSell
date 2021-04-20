@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "/", to: "merchandises#index"
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"
+  get "/sessions", to: "sessions#new"
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/auth/facebook/callback", to: 'sessions#book_login'
   post "/merchandises/filter", to: 'merchandises#filter', as: 'filter'

@@ -11,6 +11,11 @@ class SessionsController < ApplicationController
 
         redirect_to user_path(@user)
     end
+
+    def get
+        render "sessions/login"
+    end
+
     def new  
     end
 
@@ -81,6 +86,7 @@ class SessionsController < ApplicationController
 
                 redirect_to user_path(@user)
                else 
+                @error = "Incorrect username or password"
                 render "sessions/new"
                end
 
@@ -91,6 +97,7 @@ class SessionsController < ApplicationController
 
                     redirect_to user_path(@user)
                 else
+                    @error = "Incorrect username or password"
                     render "sessions/new"
                 end
             end
